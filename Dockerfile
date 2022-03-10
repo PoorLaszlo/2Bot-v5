@@ -8,6 +8,8 @@ RUN apk update && apk add git
 
 RUN npm install
 
+RUN git init
+
 COPY . .
 
 CMD [ "node", "index.js" ]

@@ -1,6 +1,6 @@
 {
   "name": "discord-bot",
-  "version": "5.0.0-beta-2022-03-09",
+  "version": "5.0.0-beta-2022-03-10",
   "description": "Very simple discord bot.",
   "main": "index.js",
   "scripts": {
