@@ -40,7 +40,7 @@ const command = new SlashCommand()
           })
           .join("\n") +
           "\n\n" +
-          `Discord Music Bot Version: v${
+          `2Bot Version: v${
             require("../../package.json").version
           }; Build: ${gitHash}` +
           "\n" +
