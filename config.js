@@ -23,7 +23,7 @@ module.exports = {
       retryAmount: 15, //- The amount of times to retry connecting to the node if connection got dropped.
       retryDelay: 6000, //- Delay between reconnect attempts if connection is lost.
       secure: false, //- Can be either true or false. Only use true if ssl is enabled!
-    },
+    } /*,
     {
       identifer: "devin-dev",
       host: "lavalink.devin-dev.xyz",
@@ -122,7 +122,7 @@ module.exports = {
       retryAmount: 15,
       retryDelay: 6000,
       secure: false
-    }
+    } */
   ],
   embedColor: "#00f7ff", //Color of the embeds, hex supported
   presence: {
