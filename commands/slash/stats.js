@@ -15,7 +15,7 @@ const command = new SlashCommand()
     const oscpucores = oscputhreads / 2;
     // Get nodejs version
     const nodeVersion = process.version;
-
+    const { version } = require("discord.js");
     // get the uptime in a human readable format
     const runtime = moment
       .duration(client.uptime)
@@ -75,7 +75,7 @@ const command = new SlashCommand()
           name: "Bot stats",
           value: `\`\`\`yml\nGuilds: ${
             client.guilds.cache.size
-          } \nNodeJS: ${nodeVersion}\n2Bot: v${
+          } \nNodeJS: ${nodeVersion}\nDiscord.js:${version}\n2Bot: v${
             require("../../package.json").version
           } \`\`\``,
           inline: true,
