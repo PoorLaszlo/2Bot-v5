@@ -10,7 +10,7 @@ const command = new SlashCommand()
   .setRun(async (client, interaction) => {
     // get OS info
     const osver = os.platform() + " " + os.release();
-
+    const oscpu = os.cpus()[0].model;
     // Get nodejs version
     const nodeVersion = process.version;
 
@@ -28,6 +28,7 @@ const command = new SlashCommand()
       1024 /
       1024
     ).toFixed(2);
+    const lavacpuusage = client.manager.nodes.values().next().value.stats.systemLoad;
     // sow lavalink memory alocated in a nice format
     const lavamemalocated = (
       client.manager.nodes.values().next().value.stats.memory.allocated /
@@ -60,7 +61,7 @@ const command = new SlashCommand()
       .setFields([
         {
           name: `Lavalink stats`,
-          value: `\`\`\`yml\nUptime: ${lavauptime}\nRAM: ${lavaram} MB\nPlaying: ${
+          value: `\`\`\`yml\nCPU Load: ${lavacpuusage}\nUptime: ${lavauptime}\nRAM: ${lavaram} / ${lavamemalocated} MB\nPlaying: ${
             client.manager.nodes.values().next().value.stats.playingPlayers
           } out of ${
             client.manager.nodes.values().next().value.stats.players
@@ -78,7 +79,7 @@ const command = new SlashCommand()
         },
         {
           name: "System stats",
-          value: `\`\`\`yml\nOS: ${osver}\nUptime: ${sysuptime}\n\`\`\``,
+          value: `\`\`\`yml\nCPU: ${oscpu}\nOS: ${osver}\nUptime: ${sysuptime}\n\`\`\``,
           inline: false,
         },
       ])
