@@ -28,7 +28,7 @@ const command = new SlashCommand()
       1024 /
       1024
     ).toFixed(2);
-    const lavacpuusage = client.manager.nodes.values().next().value.stats.system.load;
+    const lavacpuusage = client.manager.nodes.values().next().value.stats.load;
     // sow lavalink memory alocated in a nice format
     const lavamemalocated = (
       client.manager.nodes.values().next().value.stats.memory.allocated /
