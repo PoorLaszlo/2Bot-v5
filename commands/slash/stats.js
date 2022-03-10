@@ -64,7 +64,7 @@ const command = new SlashCommand()
       .setFields([
         {
           name: `Lavalink stats`,
-          value: `\`\`\`yml\nCPU: Unknown | ${lavacpucores} Cores / (?) Threads \nCPU Load: ${lavacpuusage}%\nUptime: ${lavauptime}\nRAM: ${lavaram} / ${lavamemalocated} MB\nPlaying: ${
+          value: `\`\`\`yml\nCPU: Unknown | ${lavacpucores} Cores\nCPU Load: ${lavacpuusage}%\nUptime: ${lavauptime}\nRAM: ${lavaram} / ${lavamemalocated} MB\nPlaying: ${
             client.manager.nodes.values().next().value.stats.playingPlayers
           } out of ${
             client.manager.nodes.values().next().value.stats.players
