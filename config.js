@@ -1,4 +1,6 @@
 module.exports = {
+  cmdPerPage: 10, //Number of commands per page of help command
+  adminId: "221287211683938306", // Admin of the bot
   token: process.env['token'] || "", //Bot's Token
   clientId: process.env['clientId'] || "", //ID of the bot
   clientSecret: process.env['clientSecret'] || "", //Client Secret of the bot
@@ -16,12 +18,12 @@ module.exports = {
   // The default one should work fine.
   nodes: [
     {
-      identifier: "dpaste", //- Used for indentifier in stats commands.
-      host: "losingtime.dpaste.org",
-      port: 2124,
-      password: "SleepingOnTrains",
-      retryAmount: 15, //- The amount of times to retry connecting to the node if connection got dropped.
-      retryDelay: 6000, //- Delay between reconnect attempts if connection is lost.
+      identifier: "Main Node", //- Used for indentifier in stats commands.
+      host: "lavalink.darrenofficial.com",
+      port: 80,
+      password: "hellothere",
+      retryAmount: 200, //- The amount of times to retry connecting to the node if connection got dropped.
+      retryDelay: 40, //- Delay between reconnect attempts if connection is lost.
       secure: false, //- Can be either true or false. Only use true if ssl is enabled!
     } /*,
     {

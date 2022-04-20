@@ -34,16 +34,18 @@ const command = new SlashCommand()
     
     // get the lyrics 
     let lyrics = await fetch(url).then((res) => res.json());
-
+    let text = lyrics.lyrics;
+	  if (text.length > 4096) {
+		  text = text.substring(0, 4090) + '...';
+    }
     // if the status is ok then send the embed
     if (lyrics.response == 200) {
-      // !BUG: if the lyrics are too long, the embed will fail. embeds[0].description: Must be 4096 or fewer in length.
       let lyricsEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setTitle(`${lyrics.full_title}`)
         .setURL(lyrics.url)
         .setThumbnail(lyrics.thumbnail)
-        .setDescription(lyrics.lyrics);
+        .setDescription(text);
       return interaction.editReply({ embeds: [lyricsEmbed] });
     } else if (lyrics.response !== 200) {
       let failEmbed = new MessageEmbed()
@@ -51,11 +53,6 @@ const command = new SlashCommand()
         .setDescription(`❌ | No lyrics found for ${search}! Please try again.`);
       return interaction.editReply({ embeds: [failEmbed] });
     }
-  });
-
-
-
-
-      
+});
 
 module.exports = command;
