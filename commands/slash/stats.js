@@ -72,7 +72,7 @@ const command = new SlashCommand()
           inline: true,
         },
         {
-          name: "Bot stats",
+          name: "2Bot stats",
           value: `\`\`\`yml\nGuilds: ${
             client.guilds.cache.size
           } \nNodeJS: ${nodeVersion}\nDiscord.js: v${version}\n2Bot: v${

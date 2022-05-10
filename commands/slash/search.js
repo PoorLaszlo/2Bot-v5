@@ -48,7 +48,8 @@ const command = new SlashCommand()
         guild: interaction.guild.id,
         voiceChannel: interaction.member.voice.channel.id,
         textChannel: interaction.channel.id,
-        selfDeafen: true,
+        selfDeafen: client.config.selfDeafen,
+        volume: client.config.defaultVolume,
       });
     }
 

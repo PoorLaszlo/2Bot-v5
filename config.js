@@ -126,7 +126,7 @@ module.exports = {
       secure: false
     } */
   ],
-  embedColor: "#00f7ff", //Color of the embeds, hex supported
+  embedColor: "#e00404", //Color of the embeds, hex supported
   presence: {
     //PresenceData object | https://discord.js.org/#/docs/main/stable/typedef/PresenceData
     status: "online", // You can have online, idle, and dnd(invisible too but it make people think the bot is offline)
