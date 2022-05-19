@@ -87,7 +87,7 @@ const command = new SlashCommand()
 			tempArray.forEach(cmd => {
 				//console.log(cmd);
 				helpEmbed.addField(cmd.name, cmd.description)
-				.setFooter({text: `Page ${pageNo + 1} / ${maxPages}`});
+				.setFooter({text: `Oldal ${pageNo + 1} / ${maxPages}`});
 			});
 			helpEmbed.addField("Információ", `2Bot Verzió: v${
 				require("../../package.json").version

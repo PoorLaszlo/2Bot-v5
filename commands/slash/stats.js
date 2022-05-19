@@ -59,12 +59,12 @@ const command = new SlashCommand()
       .setTitle(`${client.user.username} Információ`)
       .setColor(client.config.embedColor)
       .setDescription(
-        `\`\`\`yml\nNév: ${client.user.username}#${client.user.discriminator} [${client.user.id}]\nAPI: ${client.ws.ping}ms\nFutási idő: ${runtime}\`\`\``
+        `\`\`\`yml\nNev: ${client.user.username}#${client.user.discriminator} [${client.user.id}]\nAPI: ${client.ws.ping}ms\nFutasi-ido: ${runtime}\`\`\``
       )
       .setFields([
         {
           name: `Lavalink statisztikák`,
-          value: `\`\`\`yml\nCPU: Ismeretlen | ${lavacpucores} Mag\nCPU Terhelés: ${lavacpuusage}%\nFutási idő: ${lavauptime}\nRAM: ${lavaram} / ${lavamemalocated} MB\nKliensek: ${
+          value: `\`\`\`yml\nCPU: Ismeretlen | ${lavacpucores} Mag\nCPU-Terheles: ${lavacpuusage}%\nFutasi-ido: ${lavauptime}\nRAM: ${lavaram} / ${lavamemalocated} MB\nKliensek: ${
             client.manager.nodes.values().next().value.stats.playingPlayers
           } / ${
             client.manager.nodes.values().next().value.stats.players
@@ -82,7 +82,7 @@ const command = new SlashCommand()
         },
         {
           name: "Rendszer statisztikák",
-          value: `\`\`\`yml\nCPU: ${oscpu} | ${oscpucores} Mag / ${oscputhreads} Szál\nOS: ${osver}\nFutási idő: ${sysuptime}\n\`\`\``,
+          value: `\`\`\`yml\nCPU: ${oscpu} | ${oscpucores} Mag / ${oscputhreads} Szál\nOS: ${osver}\nFutasi-ido: ${sysuptime}\n\`\`\``,
           inline: false,
         },
       ])
