@@ -10,7 +10,7 @@ const command = new SlashCommand()
       const joinEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "❌ | **You must be in a voice channel to use this command.**"
+          "❌ | **Lépj be egy hívásba a parancs lefuttatása előtt!**"
         );
       return interaction.reply({ embeds: [joinEmbed], ephemeral: true });
     }
@@ -28,7 +28,7 @@ const command = new SlashCommand()
 
     interaction.reply({
       embeds: [
-        client.Embed(`:thumbsup: | **Successfully joined <#${channel.id}>!**`),
+        client.Embed(`:thumbsup: | **Sikeresen belépve a <#${channel.id}> hívásba!**`),
       ],
     });
   });

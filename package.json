@@ -1,6 +1,6 @@
 {
   "name": "discord-bot",
-  "version": "2022-05-10",
+  "version": "2022-05-19",
   "description": "Very simple discord bot.",
   "main": "index.js",
   "scripts": {
@@ -42,8 +42,8 @@
   },
   "homepage": "https://github.com/SudhanPlayz/Discord-MusicBot#readme",
   "dependencies": {
-    "@discordjs/builders": "^0.7.0",
-    "@discordjs/rest": "^0.1.0-canary.0",
+    "@discordjs/builders": "^0.13.0",
+    "@discordjs/rest": "^0.4.0",
     "axios": "^0.27.0",
     "better-erela.js-apple": "^0.1.0",
     "better-erela.js-spotify": "1.3.7",

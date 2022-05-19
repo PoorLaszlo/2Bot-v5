@@ -10,7 +10,7 @@ const command = new SlashCommand()
       const joinEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "❌ | **You need to join voice channel first before you can use this command.**"
+          "❌ | **Lépj be egy hívásba a parancs lefuttatása előtt!**"
         );
       return interaction.reply({ embeds: [joinEmbed], ephemeral: true });
     }
@@ -24,21 +24,21 @@ const command = new SlashCommand()
       const sameEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "❌ | **You must be in the same voice channel as me.**"
+          "❌ | **Ugyanabban a hívásban kell lenned a bottal!**"
         );
       return interaction.reply({ embeds: [sameEmbed], ephemeral: true });
     }
     if (!player) {
       return interaction.reply({
-        embeds: [client.ErrorEmbed("**There's nothing to play 24/7!**")],
+        embeds: [client.ErrorEmbed("**Nincs mit játszani 24/7 módban!**")],
       });
     } else if (player.twentyFourSeven) {
       player.twentyFourSeven = false;
-      const embed = client.Embed(`✅ | **24/7 mode is now off.**`);
+      const embed = client.Embed(`✅ | **24/7 mód kikapcsolva.**`);
       return interaction.reply({ embeds: [embed] });
     } else {
       player.twentyFourSeven = true;
-      const embed = client.Embed(`✅ | **24/7 mode is now on.**`);
+      const embed = client.Embed(`✅ | **24/7 mód bekapcsolva.**`);
       return interaction.reply({ embeds: [embed] });
     }
   });

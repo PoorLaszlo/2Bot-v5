@@ -18,7 +18,7 @@ const command = new SlashCommand()
     if (!player) {
       const queueEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
-        .setDescription("There's nothing playing in the queue");
+        .setDescription("Semmi nem megy éppen...");
       return interaction.reply({ embeds: [queueEmbed], ephemeral: true });
     }
 
@@ -26,7 +26,7 @@ const command = new SlashCommand()
       const joinEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "You have to join voice channel first before you can use this command"
+          "Lépj be egy hívásba a parancs lefuttatása előtt!"
         );
       return interaction.reply({ embeds: [joinEmbed], ephemeral: true });
     }
@@ -40,7 +40,7 @@ const command = new SlashCommand()
       const sameEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "You must be in the same voice channel as me first before you can use this command"
+          "Ugyanabban a hívásban kell lenned a bottal!"
         );
       return interaction.reply({ embeds: [sameEmbed], ephemeral: true });
     }
@@ -52,7 +52,7 @@ const command = new SlashCommand()
       let thing = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          `Current queue has only **${player.queue.size}** track`
+          `A jelenlegi várólista csak **${player.queue.size}** zeneszám hosszú`
         );
       return interaction.editReply({ embeds: [thing] });
     }
@@ -63,7 +63,7 @@ const command = new SlashCommand()
     const number = position + 1;
     let thing = new MessageEmbed()
       .setColor(client.config.embedColor)
-      .setDescription(`Removed track number **${number}** from queue`);
+      .setDescription(`**${number}**-es zeneszám eltávolítva a várólistáról`);
     return interaction.editReply({ embeds: [thing] });
   });
 

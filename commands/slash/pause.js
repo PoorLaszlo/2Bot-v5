@@ -9,7 +9,7 @@ const command = new SlashCommand()
     if (!player) {
       const queueEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
-        .setDescription("❌ | **Nothing is playing right now...**");
+        .setDescription("❌ | **Semmi nem megy éppen...**");
       return interaction.reply({ embeds: [queueEmbed], ephemeral: true });
     }
 
@@ -17,7 +17,7 @@ const command = new SlashCommand()
       const joinEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "❌ | **You must be in a voice channel to use this command!**"
+          "❌ | **Lépj be egy hívásba a parancs lefuttatása előtt!**"
         );
       return interaction.reply({ embeds: [joinEmbed], ephemeral: true });
     }
@@ -31,7 +31,7 @@ const command = new SlashCommand()
       const sameEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "❌ | **You must be in the same voice channel as me to use this command!**"
+          "❌ | **Ugyanabban a hívásban kell lenned a bottal!**"
         );
       return interaction.reply({ embeds: [sameEmbed], ephemeral: true });
     }
@@ -39,7 +39,7 @@ const command = new SlashCommand()
     if (player.paused) {
       let pembed = new MessageEmbed()
         .setColor(client.config.embedColor)
-        .setDescription("❌ | **Current playing track is already paused!**");
+        .setDescription("❌ | **A jelenlegi zeneszám már szüneteltetve van!**");
       return interaction.reply({ embeds: [pembed], ephemeral: true });
     }
 
@@ -47,7 +47,7 @@ const command = new SlashCommand()
 
     let pauseembed = new MessageEmbed()
       .setColor(client.config.embedColor)
-      .setDescription(`⏸ **Paused!**`);
+      .setDescription(`⏸ **Szüneteltetve!**`);
     return interaction.reply({ embeds: [pauseembed] });
   });
 

@@ -8,14 +8,14 @@ const command = new SlashCommand()
     let player = client.manager.players.get(interaction.guild.id);
     if (!player) {
       return interaction.reply({
-        embeds: [client.ErrorEmbed("There is no music playing")],
+        embeds: [client.ErrorEmbed("Semmi nem megy éppen...")],
       });
     }
     if (!interaction.member.voice.channel) {
       const joinEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "❌ | **You need to join voice channel first before you can use this command.**"
+          "❌ | **Lépj be egy hívásba a parancs lefuttatása előtt!**"
         );
       return interaction.reply({ embeds: [joinEmbed], ephemeral: true });
     }
@@ -29,16 +29,16 @@ const command = new SlashCommand()
       const sameEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "❌ | **You must be in the same voice channel as me.**"
+          "❌ | **Ugyanabban a hívásban kell lenned a bottal!**"
         );
       return interaction.reply({ embeds: [sameEmbed], ephemeral: true });
     }
     if (player.setQueueRepeat(!player.queueRepeat));
-    const queueRepeat = player.queueRepeat ? "enabled" : "disabled";
+    const queueRepeat = player.queueRepeat ? "bekapcsolva" : "kikapcsolva";
 
     let loopembed = new MessageEmbed()
       .setColor(client.config.embedColor)
-      .setDescription(`:thumbsup: | **Loop queue is now \`${queueRepeat}\`**`);
+      .setDescription(`:thumbsup: | **Várólista loop \`${queueRepeat}\`**`);
     interaction.reply({ embeds: [loopembed] });
   });
 

@@ -9,7 +9,7 @@ const command = new SlashCommand()
     if (!player) {
       const queueEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
-        .setDescription("❌ | **There's nothing playing in the queue**");
+        .setDescription("❌ | **Semmi nem megy éppen...**");
       return interaction.reply({ embeds: [queueEmbed], ephemeral: true });
     }
 
@@ -17,7 +17,7 @@ const command = new SlashCommand()
       const joinEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "❌ | **You must be in a voice channel to use this command.**"
+          "❌ | **Lépj be egy hívásba a parancs lefuttatása előtt!**"
         );
       return interaction.reply({ embeds: [joinEmbed], ephemeral: true });
     }
@@ -31,7 +31,7 @@ const command = new SlashCommand()
       const sameEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "❌ | **You must be in the same voice channel as me to use this command!**"
+          "❌ | **Ugyanabban a hívásban kell lenned a bottal!**"
         );
       return interaction.reply({ embeds: [sameEmbed], ephemeral: true });
     }
@@ -39,7 +39,7 @@ const command = new SlashCommand()
     if (!player.queue || !player.queue.length || player.queue.length === 0) {
       const addEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
-        .setDescription("❌ | **There are no songs in the queue.**");
+        .setDescription("❌ | **Üres a várólista...**");
       return interaction.reply({ embeds: [addEmbed], ephemeral: true });
     }
 
@@ -47,7 +47,7 @@ const command = new SlashCommand()
     player.queue.shuffle();
     const shuffleEmbed = new MessageEmbed()
       .setColor(client.config.embedColor)
-      .setDescription("🔀 | **Successfully shuffled the queue.**");
+      .setDescription("🔀 | **Várólista sikeresen megkeverve.**");
     return interaction.reply({ embeds: [shuffleEmbed] });
   });
 

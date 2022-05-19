@@ -10,7 +10,7 @@ const command = new SlashCommand()
       const joinEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "You need to join voice channel first before you can use this command"
+          "Lépj be egy hívásba a parancs lefuttatása előtt!"
         );
       return interaction.reply({ embeds: [joinEmbed], ephemeral: true });
     }
@@ -23,7 +23,7 @@ const command = new SlashCommand()
     ) {
       const sameEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
-        .setDescription("You must be in the same voice channel as me.");
+        .setDescription("Ugyanabban a hívásban kell lenned a bottal!");
       return interaction.reply({ embeds: [sameEmbed], ephemeral: true });
     }
     let channel = await client.getChannel(client, interaction);
@@ -46,7 +46,7 @@ const command = new SlashCommand()
       if (res.status !== 200) {
         console.log(res.status);
         return interaction.reply(
-          "There was an error creating the invite. Please try again later."
+          "Egy hiba következett be a behívó készítése közben. Kérlek próbáld újra később."
         );
       }
       const invite = await res.json();
@@ -57,11 +57,11 @@ const command = new SlashCommand()
         })
         //.setAuthor(`Poker Night`, "https://darrennathanael.com/cdn/poker.png")
         .setColor(client.config.embedColor)
-        .setDescription(`Using **Poker Night** you can play Poker with your friends in a Voice Channel. Click *Join Poker Night* to join in!
+        .setDescription(`A **Poker Night** használatával pókerezni tudsz a barátaiddal egy hívásban. Kattints a *Csatlakozás*-ra hogy belépj!
       
-      __**[Join Poker Night](https://discord.com/invite/${invite.code})**__
+      __**[Csatlakozás](https://discord.com/invite/${invite.code})**__
 
-      ⚠ **Note:** This only works in Desktop`);
+      ⚠ **Figyelem:** Ez csak asztali számítógépen működik.`);
       return interaction.reply({ embeds: [Embed] });
     });
   });

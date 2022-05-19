@@ -92,12 +92,12 @@
               <a class="nav-link" href="#features"
                 >Jellemzők</a
               >
-              <a class="nav-link" href="#commands"
+              <!--<a class="nav-link" href="#commands"
                 >Parancsok</a
-              >
+              >-->
             </div>
             <a href="/dashboard" class="nav-link">
-              OAuth Dashboard
+              Dashboard
             </a>
           </div>
           <div class="collapse navbar-collapse" id="navbarText">
@@ -517,10 +517,10 @@
         $("#hero").append(`
             <a href="/dashboard" class="btn" type="button" style="background: rgba( 255, 255, 255, 1 );
 border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 ); margin: 30px;">OAuth Dashboard</a>`);
+border: 1px solid rgba( 255, 255, 255, 0.18 ); margin: 30px;">Dashboard</a>`);
       });
 
-      $.get("/api/commands", (data) => {
+      /*$.get("/api/commands", (data) => {
         //same as above check it :eyes:
         data.commands.forEach((cmd) => {
           $("#commands-body").append(`
@@ -532,7 +532,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 ); margin: 30px;">OAuth Dashboard</a
 </tr>
 `);
         });
-      });
+      });*/
     });
   </script>
 </html>

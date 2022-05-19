@@ -18,9 +18,9 @@ const command = new SlashCommand()
             let cmd = require(ContextCommandsDirectory + "/" + file);
             if (!cmd.command || !cmd.run)
               return this.warn(
-                "❌ Unable to load Command: " +
+                "❌ Sikertelen parancs betöltés: " +
                   file.split(".")[0] +
-                  ", File doesn't have either command/run"
+                  ", A fájlnak nincs command/run metódusa."
               );
             client.contextCommands.set(file.split(".")[0].toLowerCase(), cmd);
           });
@@ -36,9 +36,9 @@ const command = new SlashCommand()
 
             if (!cmd || !cmd.run)
               return this.warn(
-                "❌ Unable to load Command: " +
+                "❌ Sikertelen parancs betöltés: " +
                   file.split(".")[0] +
-                  ", File doesn't have an valid command with run function"
+                  ", A fájlnak nincs command/run metódusa."
               );
             client.slashCommands.set(file.split(".")[0].toLowerCase(), cmd);
           });
@@ -46,13 +46,13 @@ const command = new SlashCommand()
 
         const totalCmds =
           client.slashCommands.size + client.contextCommands.size;
-        client.log(`Reloaded ${totalCmds} commands!`);
+        client.log(`Sikeresen újratöltve ${totalCmds} db parancs!`);
         return interaction.reply({
           embeds: [
             new MessageEmbed()
               .setColor(client.config.embedColor)
-              .setDescription(`Sucessfully Reloaded \`${totalCmds}\` Commands!`)
-              .setFooter({text: `${client.user.username} was reloaded by ${interaction.user.username}`})
+              .setDescription(`Sikeresen újratöltve \`${totalCmds}\` db parancs!`)
+              .setFooter({text: `${client.user.username} újratöltve ${interaction.user.username} álltal`})
               .setTimestamp(),
           ], ephemeral: true
         });
@@ -63,7 +63,7 @@ const command = new SlashCommand()
             new MessageEmbed()
               .setColor(client.config.embedColor)
               .setDescription(
-                "An error has occured. For more details please check console."
+                "Egy hiba lépett közbe. További információ a konzolon."
               ),
           ], ephemeral: true
         });
@@ -73,7 +73,7 @@ const command = new SlashCommand()
         embeds: [
           new MessageEmbed()
             .setColor(client.config.embedColor)
-            .setDescription("You are not authorized to use this command!"),
+            .setDescription("Nincsen engedélyed a parancs futtatására!"),
         ], ephemeral: true
       });
     }

@@ -30,7 +30,7 @@ const command = new SlashCommand()
     if (!player) {
       const queueEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
-        .setDescription("❌ | There is no music playing in this guild!");
+        .setDescription("❌ | Nem megy éppen zene a szerveren!");
       return interaction.reply({ embeds: [queueEmbed], ephemeral: true });
     }
 
@@ -38,7 +38,7 @@ const command = new SlashCommand()
       const joinEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "❌ | You must be in a voice channel to use this command!"
+          "❌ | Lépj be egy hívásba a parancs lefuttatása előtt!"
         );
       return interaction.reply({ embeds: [joinEmbed], ephemeral: true });
     }
@@ -52,7 +52,7 @@ const command = new SlashCommand()
       const sameEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "❌ | You must be in the same voice channel as the bot to use this command!"
+          "❌ | Ugyanabban a hívásban kell lenned a bottal!"
         );
       return interaction.reply({ embeds: [sameEmbed], ephemeral: true });
     }
@@ -61,40 +61,40 @@ const command = new SlashCommand()
     let thing = new MessageEmbed().setColor(client.config.embedColor);
 
     if (args == "nightcore") {
-      thing.setDescription("✅ | Nightcore filter is now active!");
+      thing.setDescription("✅ | Nightcore filter bekapcsolva!");
       player.nightcore = true;
     } else if (args == "bassboost") {
-      thing.setDescription("✅ | BassBoost filter is now on!");
+      thing.setDescription("✅ | BassBoost filter bekapcsolva!");
       player.bassboost = true;
     } else if (args == "vaporwave") {
-      thing.setDescription("✅ | Vaporwave filter is now on!");
+      thing.setDescription("✅ | Vaporwave filter bekapcsolva!");
       player.vaporwave = true;
     } else if (args == "pop") {
-      thing.setDescription("✅ | Pop filter is now on!");
+      thing.setDescription("✅ | Pop filter bekapcsolva!");
       player.pop = true;
     } else if (args == "soft") {
-      thing.setDescription("✅ | Soft filter is now on!");
+      thing.setDescription("✅ | Soft filter bekapcsolva!");
       player.soft = true;
     } else if (args == "treblebass") {
-      thing.setDescription("✅ | Treblebass filter is now on!");
+      thing.setDescription("✅ | Treblebass filter bekapcsolva!");
       player.treblebass = true;
     } else if (args == "eightD") {
-      thing.setDescription("✅ | Eight Dimension filter is now on!");
+      thing.setDescription("✅ | Eight Dimension filter bekapcsolva!");
       player.eightD = true;
     } else if (args == "karaoke") {
-      thing.setDescription("✅ | Karaoke filter is now on!");
+      thing.setDescription("✅ | Karaoke filter bekapcsolva!");
       player.karaoke = true;
     } else if (args == "vibrato") {
-      thing.setDescription("✅ | Vibrato filter is now on!");
+      thing.setDescription("✅ | Vibrato filter bekapcsolva!");
       player.vibrato = true;
     } else if (args == "tremolo") {
-      thing.setDescription("✅ | Tremolo filter is now on!");
+      thing.setDescription("✅ | Tremolo filter bekapcsolva!");
       player.tremolo = true;
     } else if (args == "off") {
-      thing.setDescription("✅ | EQ has been cleared!");
+      thing.setDescription("✅ | EQ kitörölve!");
       player.reset();
     } else {
-      thing.setDescription("❌ | Invalid filter!");
+      thing.setDescription("❌ | Helytelen filter!");
     }
 
     return interaction.reply({ embeds: [thing] });

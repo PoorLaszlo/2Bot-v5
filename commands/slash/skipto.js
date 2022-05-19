@@ -19,7 +19,7 @@ const command = new SlashCommand()
     if (!player) {
       const queueEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
-        .setDescription("❌ | There is no music playing in this guild!");
+        .setDescription("❌ | Semmi nem megy éppen...");
       return interaction.reply({ embeds: [queueEmbed], ephemeral: true });
     }
 
@@ -27,7 +27,7 @@ const command = new SlashCommand()
       const joinEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "❌ | You must be in a voice channel to use this command!"
+          "❌ | Lépj be egy hívásba a parancs lefuttatása előtt!"
         );
       return interaction.reply({ embeds: [joinEmbed], ephemeral: true });
     }
@@ -41,7 +41,7 @@ const command = new SlashCommand()
       const sameEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "❌ | You must be in the same voice channel as the bot to use this command!"
+          "❌ | Ugyanabban a hívásban kell lenned a bottal!"
         );
       return interaction.reply({ embeds: [sameEmbed], ephemeral: true });
     }
@@ -54,7 +54,7 @@ const command = new SlashCommand()
       if (!position || position < 0 || position > player.queue.size) {
         let thing = new MessageEmbed()
           .setColor(client.config.embedColor)
-          .setDescription("❌ | Invalid position!");
+          .setDescription("❌ | Helytelen pozíció!");
         return interaction.editReply({ embeds: [thing] });
       }
 
@@ -63,7 +63,7 @@ const command = new SlashCommand()
 
       let thing = new MessageEmbed()
         .setColor(client.config.embedColor)
-        .setDescription("✅ | Skipped to position " + position);
+        .setDescription("✅ | Átlépve erre a pozícióra: " + position);
 
       return interaction.editReply({ embeds: [thing] });
     } catch {
@@ -74,7 +74,7 @@ const command = new SlashCommand()
         embeds: [
           new MessageEmbed()
             .setColor(client.config.embedColor)
-            .setDescription("✅ | Skipped to position " + position),
+            .setDescription("✅ | Átlépve erre a pozícióra: " + position),
         ],
       });
     }

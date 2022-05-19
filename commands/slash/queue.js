@@ -12,14 +12,14 @@ const command = new SlashCommand()
     if (!player) {
       const queueEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
-        .setDescription("There's nothing playing in the queue");
+        .setDescription("Semmi nem megy éppen a várólistán...");
       return interaction.reply({ embeds: [queueEmbed], ephemeral: true });
     }
 
     if (!player.playing) {
       const queueEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
-        .setDescription("There's nothing playing.");
+        .setDescription("Semmi nem megy éppen...");
       return interaction.reply({ embeds: [queueEmbed], ephemeral: true });
     }
 
@@ -27,7 +27,7 @@ const command = new SlashCommand()
       const joinEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "You have to join voice channel first before you can use this command"
+          "Lépj be egy hívásba a parancs lefuttatása előtt!"
         );
       return interaction.reply({ embeds: [joinEmbed], ephemeral: true });
     }
@@ -41,7 +41,7 @@ const command = new SlashCommand()
       const sameEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "You must be in the same voice channel as me first before you can use this command"
+          "Ugyanabban a hívásban kell lenned a bottal!"
         );
       return interaction.reply({ embeds: [sameEmbed], ephemeral: true });
     }
@@ -52,10 +52,10 @@ const command = new SlashCommand()
       let song = player.queue.current;
       const embed = new MessageEmbed()
         .setColor(client.config.embedColor)
-        .setDescription(`**♪ | Now playing:** [${song.title}](${song.uri})`)
+        .setDescription(`**♪ | Éppen megy:** [${song.title}](${song.uri})`)
         .addFields(
           {
-            name: "Duration",
+            name: "Hossz",
             value: `\`${pms(player.position, { colonNotation: true })} / ${pms(
               player.queue.current.duration,
               { colonNotation: true }
@@ -63,12 +63,12 @@ const command = new SlashCommand()
             inline: true,
           },
           {
-            name: "Volume",
+            name: "Hangerő",
             value: `\`${player.volume}\``,
             inline: true,
           },
           {
-            name: "Total Tracks",
+            name: "Összes zeneszám",
             value: `\`${player.queue.totalSize - 1}\``,
             colonNotation: true,
             inline: true,
@@ -96,11 +96,11 @@ const command = new SlashCommand()
         const embedTwo = new MessageEmbed()
           .setColor(client.config.embedColor)
           .setDescription(
-            `**♪ | Now playing:** [${song.title}](${song.uri}) [${player.queue.current.requester}]\n\n**Queued Tracks**\n${pages[page]}`
+            `**♪ | Éppen megy:** [${song.title}](${song.uri}) [${player.queue.current.requester}]\n\n**Várólistán lévő zenék**\n${pages[page]}`
           )
           .addFields(
             {
-              name: "Track Duration",
+              name: "Zene hossz",
               value: `\`${pms(player.position, {
                 colonNotation: true,
               })} / ${pms(player.queue.current.duration, {
@@ -109,21 +109,21 @@ const command = new SlashCommand()
               inline: true,
             },
             {
-              name: "Total Tracks Duration",
+              name: "Összes zeneszám hossz",
               value: `\`${pms(player.queue.duration, {
                 colonNotation: true,
               })}\``,
               inline: true,
             },
             {
-              name: "Total Tracks",
+              name: "Összes zeneszám",
               value: `\`${player.queue.totalSize - 1}\``,
               colonNotation: true,
               inline: true,
             }
           )
           .setFooter({
-            text: `Page ${page + 1}/${pages.length}`,
+            text: `Oldal ${page + 1}/${pages.length}`,
           });
 
         await interaction
@@ -136,11 +136,11 @@ const command = new SlashCommand()
         const embedThree = new MessageEmbed()
           .setColor(client.config.embedColor)
           .setDescription(
-            `**♪ | Now playing:** [${song.title}](${song.uri}) [${player.queue.current.requester}]\n\n**Queued Tracks**\n${pages[page]}`
+            `**♪ | Éppen megy:** [${song.title}](${song.uri}) [${player.queue.current.requester}]\n\n**Várólistán lévő zenék**\n${pages[page]}`
           )
           .addFields(
             {
-              name: "Track Duration",
+              name: "Zene hossz",
               value: `\`${pms(player.position, {
                 colonNotation: true,
               })} / ${pms(player.queue.current.duration, {
@@ -149,21 +149,21 @@ const command = new SlashCommand()
               inline: true,
             },
             {
-              name: "Total Tracks Duration",
+              name: "Összes zeneszám hossz",
               value: `\`${pms(player.queue.duration, {
                 colonNotation: true,
               })}\``,
               inline: true,
             },
             {
-              name: "Total Tracks",
+              name: "Összes zeneszám",
               value: `\`${player.queue.totalSize - 1}\``,
               colonNotation: true,
               inline: true,
             }
           )
           .setFooter({
-            text: `Page ${page + 1}/${pages.length}`,
+            text: `Oldal ${page + 1}/${pages.length}`,
           });
 
         const buttonOne = new MessageButton()
@@ -190,7 +190,7 @@ const command = new SlashCommand()
             else
               return b
                 .reply({
-                  content: `Only **${interaction.user.tag}** can use this button.`,
+                  content: `Csak **${interaction.user.tag}** használhatja ezt a gombot.`,
                   ephemeral: true,
                 })
                 .catch(() => {});
@@ -207,11 +207,11 @@ const command = new SlashCommand()
             const embedFour = new MessageEmbed()
               .setColor(client.config.embedColor)
               .setDescription(
-                `**♪ | Now playing:** [${song.title}](${song.uri}) [${player.queue.current.requester}]\n\n**Queued Tracks**\n${pages[page]}`
+                `**♪ | Éppen megy:** [${song.title}](${song.uri}) [${player.queue.current.requester}]\n\n**Várólistán lévő zenék**\n${pages[page]}`
               )
               .addFields(
                 {
-                  name: "Track Duration",
+                  name: "Zene hossz",
                   value: `\`${pms(player.position, {
                     colonNotation: true,
                   })} / ${pms(player.queue.current.duration, {
@@ -220,21 +220,21 @@ const command = new SlashCommand()
                   inline: true,
                 },
                 {
-                  name: "Total Tracks Duration",
+                  name: "Összes zeneszám hossz",
                   value: `\`${pms(player.queue.duration, {
                     colonNotation: true,
                   })}\``,
                   inline: true,
                 },
                 {
-                  name: "Total Tracks",
+                  name: "Összes zeneszám",
                   value: `\`${player.queue.totalSize - 1}\``,
                   colonNotation: true,
                   inline: true,
                 }
               )
               .setFooter({
-                text: `Page ${page + 1}/${pages.length}`,
+                text: `Oldal ${page + 1}/${pages.length}`,
               });
 
             await interaction.editReply({
@@ -250,11 +250,11 @@ const command = new SlashCommand()
             const embedFive = new MessageEmbed()
               .setColor(client.config.embedColor)
               .setDescription(
-                `**♪ | Now playing:** [${song.title}](${song.uri}) [${player.queue.current.requester}]\n\n**Queued Tracks**\n${pages[page]}`
+                `**♪ | Éppen megy:** [${song.title}](${song.uri}) [${player.queue.current.requester}]\n\n**Várólistán lévő zenék**\n${pages[page]}`
               )
               .addFields(
                 {
-                  name: "Track Duration",
+                  name: "Zene hossz",
                   value: `\`${pms(player.position, {
                     colonNotation: true,
                   })} / ${pms(player.queue.current.duration, {
@@ -263,21 +263,21 @@ const command = new SlashCommand()
                   inline: true,
                 },
                 {
-                  name: "Total Tracks Duration",
+                  name: "Összes zeneszám hossz",
                   value: `\`${pms(player.queue.duration, {
                     colonNotation: true,
                   })}\``,
                   inline: true,
                 },
                 {
-                  name: "Total Tracks",
+                  name: "Összes zeneszám",
                   value: `\`${player.queue.totalSize - 1}\``,
                   colonNotation: true,
                   inline: true,
                 }
               )
               .setFooter({
-                text: `Page ${page + 1}/${pages.length}`,
+                text: `Oldal ${page + 1}/${pages.length}`,
               });
 
             await interaction

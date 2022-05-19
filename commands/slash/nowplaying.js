@@ -11,33 +11,33 @@ const command = new SlashCommand()
     if (!player) {
       const queueEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
-        .setDescription("There's nothing playing in the queue");
+        .setDescription("Semmi nem megy éppen a várólistán...");
       return interaction.reply({ embeds: [queueEmbed], ephemeral: true });
     }
 
     if (!player.playing) {
       const queueEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
-        .setDescription("There's nothing playing.");
+        .setDescription("Semmi nem megy éppen...");
       return interaction.reply({ embeds: [queueEmbed], ephemeral: true });
     }
 
     const song = player.queue.current;
     const embed = new MessageEmbed()
       .setColor(client.config.embedColor)
-      .setTitle("Now playing ♪")
+      .setTitle("Jelenlegi zene ♪")
       // show who requested the song via setField, also show the duration of the song
       .setFields([
         {
-          name: "Requested by",
+          name: "Kérte",
           value: `<@${song.requester.id}>`,
           inline: true,
         },
         // show duration if live show live
         {
-          name: "Duration",
+          name: "Hossz",
           value: song.isStream
-            ? `\`LIVE\``
+            ? `\`ÉLŐ\``
             : `\`${prettyMilliseconds(player.position, {
                 secondsDecimalDigits: 0,
               })} / ${prettyMilliseconds(song.duration, {

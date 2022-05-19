@@ -17,7 +17,7 @@ const command = new SlashCommand()
     await interaction.deferReply().catch((_) => {});
 
 	await interaction.editReply({
-		embeds: [client.Embed(":mag_right: **Searching...**")],
+		embeds: [client.Embed(":mag_right: **Keresés...**")],
 	});
 
 	const args = interaction.options.getString("song");
@@ -26,7 +26,7 @@ const command = new SlashCommand()
 
 	if (!args && !player)
 	return interaction.editReply({
-		embeds: [client.ErrorEmbed("❌ | **There's nothing playing**")],
+		embeds: [client.ErrorEmbed("❌ | **Semmi nem megy éppen...**")],
 	});
 
 	// if no input, search for the current song. if no song console.log("No song input");
@@ -41,7 +41,7 @@ const command = new SlashCommand()
 	if (lyrics.response !== 200) {
 		let failEmbed = new MessageEmbed()
 		.setColor("RED")
-		.setDescription(`❌ | No lyrics found for ${search}! Please try again.`);
+		.setDescription(`❌ | Nem található dalszöveg ehhez a számhoz: ${search}! Próbáld meg mégegyszer.`);
 		return interaction.editReply({ embeds: [failEmbed] });
 	}
 

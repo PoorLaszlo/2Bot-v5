@@ -26,7 +26,7 @@ const command = new SlashCommand()
         .trim();
     } catch (e) {
       // do nothing
-      gitHash = "unknown";
+      gitHash = "-";
     }
     
 	// default Page No.
@@ -35,11 +35,11 @@ const command = new SlashCommand()
 	const helpEmbed = new MessageEmbed()
     .setColor(client.config.embedColor)
     .setAuthor({
-      name: `Commands of ${client.user.username}`,
+      name: `${client.user.username} parancsai`,
       iconURL: client.config.iconURL,
     })
     .setTimestamp()
-    .setFooter({text: `Page ${pageNo + 1} / ${maxPages}`});
+    .setFooter({text: `${pageNo + 1} / ${maxPages} oldal`});
 
     // initial temporary array 
     var tempArray = filteredCommands.slice(pageNo * client.config.cmdPerPage, (pageNo * client.config.cmdPerPage) + client.config.cmdPerPage);
@@ -47,11 +47,11 @@ const command = new SlashCommand()
     tempArray.forEach(cmd => {
       helpEmbed.addField(cmd.name, cmd.description)
     });
-    helpEmbed.addField("Credits", `2Bot Version: v${
+    helpEmbed.addField("Információ", `2Bot Verzió: v${
       require("../../package.json").version
       }; Build: ${gitHash}` +
       "\n" +
-      `[✨ Support Server](${client.config.supportServer}) | [Issues](${client.config.Issues}) | [Source](https://github.com/SudhanPlayz/Discord-MusicBot/tree/v5) | [Invite Me](https://discord.com/oauth2/authorize?client_id=${client.config.clientId}&permissions=${client.config.permissions}&scope=bot%20applications.commands)`
+      `[✨ Support Szerver](${client.config.supportServer}) | [Problémák](${client.config.Issues}) | [Forrás](https://github.com/SudhanPlayz/Discord-MusicBot/tree/v5) | [Meghívás](https://discord.com/oauth2/authorize?client_id=${client.config.clientId}&permissions=${client.config.permissions}&scope=bot%20applications.commands)`
     );
   
 	// Construction of the buttons for the embed
@@ -89,11 +89,11 @@ const command = new SlashCommand()
 				helpEmbed.addField(cmd.name, cmd.description)
 				.setFooter({text: `Page ${pageNo + 1} / ${maxPages}`});
 			});
-			helpEmbed.addField("Credits", `2Bot Version: v${
+			helpEmbed.addField("Információ", `2Bot Verzió: v${
 				require("../../package.json").version
 			  }; Build: ${gitHash}` +
 			  "\n" +
-			  `[✨ Support Server](${client.config.supportServer}) | [Issues](${client.config.Issues}) | [Source](https://github.com/SudhanPlayz/Discord-MusicBot/tree/v5) | [Invite Me](https://discord.com/oauth2/authorize?client_id=${client.config.clientId}&permissions=${client.config.permissions}&scope=bot%20applications.commands)`);
+			  `[✨ Support Szerver](${client.config.supportServer}) | [Problémák](${client.config.Issues}) | [Forrás](https://github.com/SudhanPlayz/Discord-MusicBot/tree/v5) | [Meghívás](https://discord.com/oauth2/authorize?client_id=${client.config.clientId}&permissions=${client.config.permissions}&scope=bot%20applications.commands)`);
 			await iter.update({ embeds: [helpEmbed], components: [getButtons(pageNo)], fetchReply: true });
 		});
 });

@@ -25,14 +25,14 @@ const command = new SlashCommand()
     if (!player) {
       const queueEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
-        .setDescription(":x: | **There's nothing playing**");
+        .setDescription(":x: | **Semmi nem megy éppen...**");
       return interaction.reply({ embeds: [queueEmbed], ephemeral: true });
     }
 
     if (!interaction.member.voice.channel) {
       const joinEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
-        .setDescription("You must be in a voice channel to use this command!");
+        .setDescription("Lépj be egy hívásba a parancs lefuttatása előtt!");
       return interaction.reply({ embeds: [joinEmbed], ephemeral: true });
     }
 
@@ -45,19 +45,19 @@ const command = new SlashCommand()
       const sameEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "You must be in the same voice channel as me to use this command!"
+          "Ugyanabban a hívásban kell lenned a bottal!"
         );
       return interaction.reply({ embeds: [sameEmbed], ephemeral: true });
     }
 
     let trackNum = Number(track) - 1;
     if (trackNum < 0 || trackNum > player.queue.length - 1) {
-      return interaction.reply(":x: | **Invalid track number**");
+      return interaction.reply(":x: | **Helytelen zene sorszám**");
     }
 
     let dest = Number(position) - 1;
     if (dest < 0 || dest > player.queue.length - 1) {
-      return interaction.reply(":x: | **Invalid position number**");
+      return interaction.reply(":x: | **Helytelen pozíció sorszám**");
     }
 
     const thing = player.queue[trackNum];
@@ -67,7 +67,7 @@ const command = new SlashCommand()
       embeds: [
         new MessageEmbed()
           .setColor(client.config.embedColor)
-          .setDescription(":white_check_mark: | **Moved track**"),
+          .setDescription(":white_check_mark: | **Zene áthelyezve**"),
       ],
     });
   });

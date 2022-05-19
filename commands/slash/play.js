@@ -17,7 +17,7 @@ const command = new SlashCommand()
     let node = await client.getLavalink(client);
     if (!node) {
       return interaction.reply({
-        embeds: [client.ErrorEmbed("Lavalink node is not connected")],
+        embeds: [client.ErrorEmbed("A Lavalink node nincs csatlakoztatva!")],
       });
     }
     let query = options.getString("query", true);
@@ -26,7 +26,7 @@ const command = new SlashCommand()
       const joinEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "❌ | **You must be in a voice channel to use this command.**"
+          "❌ | **Lépj be egy hívásba a parancs lefuttatása előtt!**"
         );
       return interaction.reply({ embeds: [joinEmbed], ephemeral: true });
     }
@@ -48,7 +48,7 @@ const command = new SlashCommand()
     }
 
     await interaction.reply({
-      embeds: [client.Embed(":mag_right: **Searching...**")],
+      embeds: [client.Embed(":mag_right: **Keresés...**")],
     });
 
     let res = await player.search(query, interaction.user).catch((err) => {
@@ -62,7 +62,7 @@ const command = new SlashCommand()
       if (!player.queue.current) player.destroy();
       return interaction
         .editReply({
-          embeds: [client.ErrorEmbed("There was an error while searching")],
+          embeds: [client.ErrorEmbed("Egy hiba következett be a keresés közben")],
         })
         .catch(this.warn);
     }
@@ -71,7 +71,7 @@ const command = new SlashCommand()
       if (!player.queue.current) player.destroy();
       return interaction
         .editReply({
-          embeds: [client.ErrorEmbed("No results were found")],
+          embeds: [client.ErrorEmbed("Nincsenek találatok")],
         })
         .catch(this.warn);
     }
@@ -82,17 +82,17 @@ const command = new SlashCommand()
         player.play();
       let addQueueEmbed = client
         .Embed()
-        .setAuthor({ name: "Added to queue", iconURL: client.config.iconURL })
+        .setAuthor({ name: "Hozzáadva a várólistához", iconURL: client.config.iconURL })
         //.setAuthor("Added to queue", client.config.iconURL) Deprecated soon
         .setDescription(
-          `[${res.tracks[0].title}](${res.tracks[0].uri})` || "No Title"
+          `[${res.tracks[0].title}](${res.tracks[0].uri})` || "Nincs cím"
         )
         .setURL(res.tracks[0].uri)
-        .addField("Author", res.tracks[0].author, true)
+        .addField("Feltöltő", res.tracks[0].author, true)
         .addField(
-          "Duration",
+          "Hossz",
           res.tracks[0].isStream
-            ? `\`LIVE\``
+            ? `\`ÉLŐ\``
             : `\`${client.ms(res.tracks[0].duration, {
                 colonNotation: true,
               })}\``,
@@ -107,7 +107,7 @@ const command = new SlashCommand()
       }
       if (player.queue.totalSize > 1)
         addQueueEmbed.addField(
-          "Position in queue",
+          "Pozíció a várólistán",
           `${player.queue.size - 0}`,
           true
         );
@@ -127,15 +127,15 @@ const command = new SlashCommand()
       let playlistEmbed = client
         .Embed()
         .setAuthor({
-          name: "Playlist added to queue",
+          name: "Játszólista hozzáadva a várólistához",
           iconURL: client.config.iconURL,
         })
         //.setAuthor("Playlist added to queue", client.config.iconURL)
         .setThumbnail(res.tracks[0].thumbnail)
         .setDescription(`[${res.playlist.name}](${query})`)
-        .addField("Enqueued", `\`${res.tracks.length}\` songs`, false)
+        .addField("Várólistára rakva", `\`${res.tracks.length}\` zene`, false)
         .addField(
-          "Playlist duration",
+          "Játszólista hossz",
           `\`${client.ms(res.playlist.duration, {
             colonNotation: true,
           })}\``,

@@ -19,11 +19,11 @@ const command = new SlashCommand()
     // get the uptime in a human readable format
     const runtime = moment
       .duration(client.uptime)
-      .format("d[ Days]・h[ Hrs]・m[ Mins]・s[ Secs]");
+      .format("d[ Nap]・h[ Óra]・m[ Perc]・s[ Másodperc]");
     // show lavalink uptime in a nice format
     const lavauptime = moment
       .duration(client.manager.nodes.values().next().value.stats.uptime)
-      .format(" D[d], H[h], m[m]");
+      .format(" d[ Nap]・h[ Óra]・m[ Perc]");
     // show lavalink memory usage in a nice format
     const lavaram = (
       client.manager.nodes.values().next().value.stats.memory.used /
@@ -41,10 +41,10 @@ const command = new SlashCommand()
     // show system uptime
     var sysuptime = moment
       .duration(os.uptime() * 1000)
-      .format("d[ Days]・h[ Hrs]・m[ Mins]・s[ Secs]");
+      .format("d[ Nap]・h[ Óra]・m[ Perc]・s[ Másodperc]");
 
     // get commit hash and date
-    let gitHash = "unknown";
+    let gitHash = "";
     try {
       gitHash = require("child_process")
         .execSync("git rev-parse HEAD")
@@ -52,28 +52,28 @@ const command = new SlashCommand()
         .trim();
     } catch (e) {
       // do nothing
-      gitHash = "unknown";
+      gitHash = "-";
     }
 
     const statsEmbed = new MessageEmbed()
-      .setTitle(`${client.user.username} Information`)
+      .setTitle(`${client.user.username} Információ`)
       .setColor(client.config.embedColor)
       .setDescription(
-        `\`\`\`yml\nName: ${client.user.username}#${client.user.discriminator} [${client.user.id}]\nAPI: ${client.ws.ping}ms\nRuntime: ${runtime}\`\`\``
+        `\`\`\`yml\nNév: ${client.user.username}#${client.user.discriminator} [${client.user.id}]\nAPI: ${client.ws.ping}ms\nFutási idő: ${runtime}\`\`\``
       )
       .setFields([
         {
-          name: `Lavalink stats`,
-          value: `\`\`\`yml\nCPU: Unknown | ${lavacpucores} Cores\nCPU Load: ${lavacpuusage}%\nUptime: ${lavauptime}\nRAM: ${lavaram} / ${lavamemalocated} MB\nPlaying: ${
+          name: `Lavalink statisztikák`,
+          value: `\`\`\`yml\nCPU: Ismeretlen | ${lavacpucores} Mag\nCPU Terhelés: ${lavacpuusage}%\nFutási idő: ${lavauptime}\nRAM: ${lavaram} / ${lavamemalocated} MB\nKliensek: ${
             client.manager.nodes.values().next().value.stats.playingPlayers
-          } out of ${
+          } / ${
             client.manager.nodes.values().next().value.stats.players
           }\`\`\``,
           inline: true,
         },
         {
-          name: "2Bot stats",
-          value: `\`\`\`yml\nGuilds: ${
+          name: "2Bot statisztikák",
+          value: `\`\`\`yml\nSzerverek: ${
             client.guilds.cache.size
           } \nNodeJS: ${nodeVersion}\nDiscord.js: v${version}\n2Bot: v${
             require("../../package.json").version
@@ -81,8 +81,8 @@ const command = new SlashCommand()
           inline: true,
         },
         {
-          name: "System stats",
-          value: `\`\`\`yml\nCPU: ${oscpu} | ${oscpucores} Cores / ${oscputhreads} Threads\nOS: ${osver}\nUptime: ${sysuptime}\n\`\`\``,
+          name: "Rendszer statisztikák",
+          value: `\`\`\`yml\nCPU: ${oscpu} | ${oscpucores} Mag / ${oscputhreads} Szál\nOS: ${osver}\nFutási idő: ${sysuptime}\n\`\`\``,
           inline: false,
         },
       ])

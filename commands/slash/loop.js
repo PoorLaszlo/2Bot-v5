@@ -8,14 +8,14 @@ const command = new SlashCommand()
     let player = client.manager.players.get(interaction.guild.id);
     if (!player) {
       return interaction.reply({
-        embeds: [client.ErrorEmbed("❌ | **Nothing is playing right now...**")],
+        embeds: [client.ErrorEmbed("❌ | **Semmi nem megy éppen...**")],
       });
     }
     if (!interaction.member.voice.channel) {
       const joinEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "❌ | **You must be in a voice channel to use this command.**"
+          "❌ | **Lépj be egy hívásba a parancs lefuttatása előtt!**"
         );
       return interaction.reply({ embeds: [joinEmbed], ephemeral: true });
     }
@@ -29,16 +29,16 @@ const command = new SlashCommand()
       const sameEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "❌ | **You must be in the same voice channel as me to use this command!**"
+          "❌ | **Ugyanabban a hívásban kell lenned a bottal!**"
         );
       return interaction.reply({ embeds: [sameEmbed], ephemeral: true });
     }
     if (player.setTrackRepeat(!player.trackRepeat));
-    const trackRepeat = player.trackRepeat ? "enabled" : "disabled";
+    const trackRepeat = player.trackRepeat ? "bekapcsolva" : "kikapcsolva";
 
     let loopembed = new MessageEmbed()
       .setColor(client.config.embedColor)
-      .setDescription(`👍 | **Loop has been \`${trackRepeat}\`**`);
+      .setDescription(`👍 | **Loop \`${trackRepeat}\`**`);
     interaction.reply({ embeds: [loopembed] });
   });
 

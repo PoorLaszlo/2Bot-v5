@@ -10,7 +10,7 @@ const command = new SlashCommand()
     if (!player) {
       const queueEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
-        .setDescription(":x: | **There's nothing playing**");
+        .setDescription(":x: | **Semmi nem megy éppen...**");
       return interaction.reply({ embeds: [queueEmbed], ephemeral: true });
     }
 
@@ -18,7 +18,7 @@ const command = new SlashCommand()
       const joinEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          ":x: | **You must be in a voice channel to use this command!**"
+          ":x: | **Lépj be egy hívásba a parancs lefuttatása előtt!**"
         );
       return interaction.reply({ embeds: [joinEmbed], ephemeral: true });
     }
@@ -32,7 +32,7 @@ const command = new SlashCommand()
       const sameEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          ":x: | **You must be in the same voice channel as me to use this command!**"
+          ":x: | **Ugyanabban a hívásban kell lenned a bottal!**"
         );
       return interaction.reply({ embeds: [sameEmbed], ephemeral: true });
     }
@@ -40,27 +40,27 @@ const command = new SlashCommand()
     const save = new MessageEmbed()
       .setColor(client.config.embedColor)
       .setAuthor({
-        name: "Saved track",
+        name: "Zene lementve",
         iconURL: `${interaction.user.displayAvatarURL({ dynamic: true })}`,
       })
       .setDescription(
-        `**Saved [${player.queue.current.title}](${player.queue.current.uri}) to your DM**`
+        `**[${player.queue.current.title}](${player.queue.current.uri}) elküldve privát üzenetben.**`
       )
       .addFields(
         {
-          name: "Track Duration",
+          name: "Zene hossz",
           value: `\`${prettyMilliseconds(player.queue.current.duration, {
             colonNotation: true,
           })}\``,
           inline: true,
         },
         {
-          name: "Track Author",
+          name: "Zene feltöltő",
           value: `\`${player.queue.current.author}\``,
           inline: true,
         },
         {
-          name: "Requested Guild",
+          name: "Szerver",
           value: `\`${interaction.guild}\``,
           inline: true,
         }
@@ -73,7 +73,7 @@ const command = new SlashCommand()
         new MessageEmbed()
           .setColor(client.config.embedColor)
           .setDescription(
-            "Please check your **DM**. If you don't receive any message from me please make sure your **DM** is open"
+            "Kérlek nézz rá a **privát üzeneteidre**. Ha nem érkezik üzenet tőlem ellenőrizd, hogy a **privát üzeneteid** nyitottra vannak állítva!"
           ),
       ],
       ephemeral: true,

@@ -23,7 +23,7 @@ const command = new SlashCommand()
       const joinEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "❌ | **You need to join voice channel first before you can use this command.**"
+          "❌ | **Lépj be egy hívásba a parancs lefuttatása előtt!**"
         );
       return interaction.reply({ embeds: [joinEmbed], ephemeral: true });
     }
@@ -37,7 +37,7 @@ const command = new SlashCommand()
       const sameEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
-          "❌ | **You must be in the same voice channel as me.**"
+          "❌ | **Ugyanabban a hívásban kell lenned a bottal!**"
         );
 
       return interaction.reply({ embeds: [sameEmbed], ephemeral: true });
@@ -66,7 +66,7 @@ const command = new SlashCommand()
         return interaction.reply({
           embeds: [
             new MessageEmbed()
-              .setDescription("An error occured while searching for the song")
+              .setDescription("Egy hiba lépett közbe a zene keresése közben")
               .setColor(client.config.embedColor),
           ],
           ephemeral: true,
@@ -77,7 +77,7 @@ const command = new SlashCommand()
         embeds: [
           new MessageEmbed()
             .setAuthor({
-              name: "An error occured while searching for the song",
+              name: "Egy hiba lépett közbe a zene keresése közben",
             })
             //.setAuthor("An error occured while searching for the song")
             .setColor(client.config.embedColor),
@@ -90,7 +90,7 @@ const command = new SlashCommand()
       return interaction.reply({
         embeds: [
           new MessageEmbed()
-            .setDescription(`No results found for \`${search}\``)
+            .setDescription(`Nincs találat a keresésre: \`${search}\``)
             .setColor(client.config.embedColor),
         ],
         ephemeral: true,
@@ -124,7 +124,7 @@ const command = new SlashCommand()
           new MessageEmbed()
             .setColor(client.config.embedColor)
             .setDescription(
-              `Here are searched result I found for \`${result}\`. Please select track within \`30 seconds\``
+              `Itt vannak a keresési találatok a keresésre: \`${result}\`. Kérlek válaszd ki a zenét \`30 mp alatt\``
             ),
         ],
         components: [menus],
@@ -153,7 +153,7 @@ const command = new SlashCommand()
             embeds: [
               new MessageEmbed()
                 .setDescription(
-                  `Added [${trackForPlay?.tracks[0]?.title}](${trackForPlay?.tracks[0].uri}) [${trackForPlay?.tracks[0]?.requester}]`
+                  `Hozzáadva [${trackForPlay?.tracks[0]?.title}](${trackForPlay?.tracks[0].uri}) [${trackForPlay?.tracks[0]?.requester}]`
                 )
                 .setColor(client.config.embedColor),
             ],
@@ -168,7 +168,7 @@ const command = new SlashCommand()
             embeds: [
               new MessageEmbed()
                 .setDescription(
-                  `No track selected. You took too long to select a track.`
+                  `Nincs kiválasztott zene. Túl lassú voltál.`
                 )
                 .setColor(client.config.embedColor),
             ],
