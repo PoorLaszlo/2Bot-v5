@@ -22,8 +22,8 @@ module.exports = {
       host: "lavalink.darrenofficial.com",
       port: 80,
       password: "hellothere",
-      retryAmount: 200, //- The amount of times to retry connecting to the node if connection got dropped.
-      retryDelay: 40, //- Delay between reconnect attempts if connection is lost.
+      retryAmount: 500, //- The amount of times to retry connecting to the node if connection got dropped.
+      retryDelay: 20, //- Delay between reconnect attempts if connection is lost.
       secure: false, //- Can be either true or false. Only use true if ssl is enabled!
     } /*,
     {
@@ -132,7 +132,7 @@ module.exports = {
     status: "online", // You can have online, idle, and dnd(invisible too but it make people think the bot is offline)
     activities: [
       {
-        name: "/help for LAVALINK NODE NOT CONNECTED", //Status Text
+        name: "/help | Parancsok listája", //Status Text
         type: "LISTENING", // PLAYING, WATCHING, LISTENING, STREAMING
       },
     ],

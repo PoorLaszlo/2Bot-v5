@@ -26,7 +26,7 @@ const command = new SlashCommand()
 
 	if (!args && !player)
 	return interaction.editReply({
-		embeds: [client.ErrorEmbed("❌ | **Semmi nem megy éppen...**")],
+		embeds: [client.ErrorEmbed("**Semmi nem megy éppen...**")],
 	});
 
 	// if no input, search for the current song. if no song console.log("No song input");

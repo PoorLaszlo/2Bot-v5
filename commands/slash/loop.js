@@ -8,7 +8,7 @@ const command = new SlashCommand()
     let player = client.manager.players.get(interaction.guild.id);
     if (!player) {
       return interaction.reply({
-        embeds: [client.ErrorEmbed("❌ | **Semmi nem megy éppen...**")],
+        embeds: [client.ErrorEmbed("**Semmi nem megy éppen...**")],
       });
     }
     if (!interaction.member.voice.channel) {

@@ -12,7 +12,7 @@ module.exports = async (client, interaction) => {
   if (!player) {
     interaction.reply({
       embeds: [
-        client.Embed("❌ | **There is no player to control in this server.**"),
+        client.Embed("❌ | **Nincs irányítható bot a szerveren...**"),
       ],
     });
     setTimeout(() => {
@@ -24,7 +24,7 @@ module.exports = async (client, interaction) => {
     const joinEmbed = new MessageEmbed()
       .setColor(client.config.embedColor)
       .setDescription(
-        "❌ | **You must be in a voice channel to use this command!**"
+        "❌ | **Lépj be egy hívásba a parancs lefuttatása előtt!**"
       );
     return interaction.reply({ embeds: [joinEmbed], ephemeral: true });
   }
@@ -36,7 +36,7 @@ module.exports = async (client, interaction) => {
     const sameEmbed = new MessageEmbed()
       .setColor(client.config.embedColor)
       .setDescription(
-        "❌ | **You must be in the same voice channel as me to use this command!**"
+        "❌ | **Ugyanabban a hívásban kell lenned a bottal!**"
       );
     return interaction.reply({ embeds: [sameEmbed], ephemeral: true });
   }
@@ -45,7 +45,7 @@ module.exports = async (client, interaction) => {
     interaction.reply({
       embeds: [
         client.Embed(
-          "🔉 | **Successfully lowered server volume to** `" +
+          "🔉 | **Hangerő sikeresen beállítva erre:** `" +
             player.volume +
             "%`"
         ),
@@ -61,7 +61,7 @@ module.exports = async (client, interaction) => {
   if (property === "Replay") {
     if (!player.queue.previous) {
       interaction.reply({
-        embeds: [client.Embed("❌ | **There is no previous song to replay.**")],
+        embeds: [client.Embed("❌ | **Nincs újrajátszandó zene.**")],
       });
       setTimeout(() => {
         interaction.deleteReply();
@@ -81,8 +81,8 @@ module.exports = async (client, interaction) => {
       embeds: [
         client.Embed(
           player.paused
-            ? ":white_check_mark: | **Paused**"
-            : ":white_check_mark: | **Resumed**"
+            ? ":white_check_mark: | **Szüneteltetve!**"
+            : ":white_check_mark: | **Folytatva!**"
         ),
       ],
     });
@@ -104,7 +104,7 @@ module.exports = async (client, interaction) => {
       interaction.reply({
         embeds: [
           client.Embed(
-            "🔊 | **Successfully increased server volume to** `" +
+            "🔊 | **Hangerő sikeresen beállítva erre:** `" +
               player.volume +
               "%`"
           ),
@@ -117,7 +117,7 @@ module.exports = async (client, interaction) => {
       interaction.reply({
         embeds: [
           client.Embed(
-            "👍 | **Volume is at maximum** `" + player.volume + "%`"
+            "👍 | **Hangerő maximális:** `" + player.volume + "%`"
           ),
         ],
       });

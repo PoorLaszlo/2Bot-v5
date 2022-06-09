@@ -5,6 +5,7 @@ const {
   MessageSelectMenu,
 } = require("discord.js");
 
+const prettyMilliseconds = require("pretty-ms");
 const command = new SlashCommand()
   .setName("search")
   .setDescription("Search for a song")
@@ -105,6 +106,11 @@ const command = new SlashCommand()
         resultFromSearch.push({
           label: `${track.title}`,
           value: `${track.uri}`,
+          description: track.isStream
+            ? `ÉLŐ`
+            : `${prettyMilliseconds(track.duration, {
+                secondsDecimalDigits: 0,
+              })} - ${track.author}`,
         });
       });
 
@@ -145,7 +151,20 @@ const command = new SlashCommand()
             uriFromCollector,
             interaction.user
           );
-          player?.queue?.add(trackForPlay.tracks[0]);
+          if (player?.queue) {
+            const r = trackForPlay.tracks[0];
+            if (player.get("autoplay")) {
+            const psba = player.get("autoplayed") || [];
+              if (r) {
+                if (!psba.includes(r.identifier)) {
+                  psba.push(r.identifier);
+                }
+              }
+              while (psba.length > 100) psba.shift();
+              player.set("autoplayed", psba);
+            }
+            player.queue.add(r);
+          }
           if (!player?.playing && !player?.paused && !player?.queue?.size)
             player?.play();
           i.editReply({
