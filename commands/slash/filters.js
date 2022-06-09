@@ -9,18 +9,17 @@ const command = new SlashCommand()
       .setName("preset")
       .setDescription("the preset to add")
       .setRequired(true)
-      .addChoices(
-        { name: "Nightcore", value: "nightcore"},
-        { name: "BassBoost", value: "bassboost"},
-        { name: "Vaporwave", value: "vaporwave"},
-        { name: "Pop", value: "pop"},
-        { name: "Soft", value: "soft"},
-        { name: "Treblebass", value: "treblebass"},
-        { name: "Eight Dimension", value: "eightD"},
-        { name: "Karaoke", value: "karaoke"},
-        { name: "Vibrato", value: "vibrato"},
-        { name: "Tremolo", value: "tremolo"},
-        { name: "Reset", value: "off"},)
+      .addChoice("Nightcore", "nightcore")
+      .addChoice("BassBoost", "bassboost")
+      .addChoice("Vaporwave", "vaporwave")
+      .addChoice("Pop", "pop")
+      .addChoice("Soft", "soft")
+      .addChoice("Treblebass", "treblebass")
+      .addChoice("Eight Dimension", "eightD")
+      .addChoice("Karaoke", "karaoke")
+      .addChoice("Vibrato", "vibrato")
+      .addChoice("Tremolo", "tremolo")
+      .addChoice("Reset", "off")
   )
 
   .setRun(async (client, interaction, options) => {
