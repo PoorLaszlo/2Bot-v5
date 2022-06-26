@@ -19,12 +19,12 @@ module.exports = {
   nodes: [
     {
       identifier: "Main Node", //- Used for indentifier in stats commands.
-      host: "lavalink.darrenofficial.com",
-      port: 80,
-      password: "hellothere",
+      host: "connect.freelavalink.ga",
+      port: 443,
+      password: "www.freelavalink.ga",
       retryAmount: 500, //- The amount of times to retry connecting to the node if connection got dropped.
       retryDelay: 20, //- Delay between reconnect attempts if connection is lost.
-      secure: false, //- Can be either true or false. Only use true if ssl is enabled!
+      secure: true, //- Can be either true or false. Only use true if ssl is enabled!
     } /*,
     {
       identifer: "devin-dev",
